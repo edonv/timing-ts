@@ -1,0 +1,35 @@
+{
+  "name": "timing-ts",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "API package for Timing.",
+  "repository": "https://github.com/edonv/timing-ts.git",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "api-gen": "npx openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts",
+    "gen-build": "npx openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts && tsc --noEmit"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.10.2"
+  },
+  "main": "./lib/timing.js",
+  "types": "./lib/timing.d.ts",
+  "files": [
+    "/README.md",
+    "/LICENSE.md",
+    "/lib/"
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "openapi-typescript": "^7.0.2",
+    "typescript": "^5.5.3"
+  },
+  "author": "edonv",
+  "keywords": [],
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
