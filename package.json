@@ -5,6 +5,9 @@
   "description": "API package for Timing.",
   "repository": "https://github.com/edonv/timing-ts.git",
   "private": false,
+  "sponsor": {
+    "url": "https://github.com/sponsors/edonv"
+  },
   "scripts": {
     "build": "tsc",
     "test": "jest",
