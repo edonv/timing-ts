@@ -33,10 +33,11 @@ export default class Timing {
     /**
      * Converts an entry reference to a raw ID for plugging into other API calls.
      * @example "/time-entries/3694122002305638144" -> "3694122002305638144"
-     * @param reference Data returned by the API with a field named `self`. For example: `/time-entries/3694122002305638144`.
+     * @param reference Entity reference string or ID returned by the API with a field named `self`. For example: `/time-entries/3694122002305638144`.
      */
-    static entryIDFromReference(reference: string): string {
-        return reference
+    static entryIDFromReference(reference: string | number): string {
+        // Just in case it's already split/stripped, it gets the last element
+        return reference.toString()
             .split('/').at(-1);
     }
 
