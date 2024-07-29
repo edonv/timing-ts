@@ -6,7 +6,7 @@
     "module": "ESNext",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "outDir": "lib",
+    "outDir": "dist",
     "noImplicitAny": false,
     "strict": false,
     "sourceMap": true,
