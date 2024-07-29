@@ -95,15 +95,15 @@ export default class Timing {
      * @description Display the specified project.
      * 
      * Child projects are provided as references; i.e. they only contain the `self` attribute.
-     * @param projectId The ID of the project to display.
+     * @param projectId The ID or full reference of the project to display.
      */
     async showProject(
-        projectId: TimingTypes.Projects.Show.PathParam,
+        projectId: TimingTypes.Projects.Show.PathParam | string,
     ): Promise<TimingTypes.Projects.Show.Response> {
         const { data } = await this._client.GET('/api/v1/projects/{project_id}', {
             params: {
                 path: {
-                    project_id: projectId,
+                    project_id: Timing.entryIDFromReference(projectId),
                 },
             },
         });
