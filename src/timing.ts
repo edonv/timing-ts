@@ -48,7 +48,7 @@ export default class Timing {
      * @description Return the complete project hierarchy.
      */
     async listProjectsHierarchically(
-        query: TimingTypes.Projects.HierarchicalList.Params,
+        query: TimingTypes.Projects.HierarchicalList.Params = {},
     ): Promise<TimingTypes.Projects.HierarchicalList.Response> {
         const { data } = await this._client.GET('/api/v1/projects/hierarchy', {
             params: {
