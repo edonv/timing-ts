@@ -108,7 +108,7 @@ export default class Timing {
             },
         });
 
-        return data.data;
+        return data.data ?? [];
     }
 
     /**
