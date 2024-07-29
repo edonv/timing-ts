@@ -64,7 +64,7 @@ export default class Timing {
      * @description Return a list containing all projects.
      */
     async listProjects(
-        query: TimingTypes.Projects.List.Params,
+        query: TimingTypes.Projects.List.Params = {},
     ): Promise<TimingTypes.Projects.List.Response> {
         const { data } = await this._client.GET('/api/v1/projects', {
             params: {
