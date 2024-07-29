@@ -13,6 +13,6 @@
     "declaration": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src", "test"],
   "exclude": ["src/openapi/generated/**"]
 }
