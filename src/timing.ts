@@ -56,10 +56,10 @@ export default class Timing {
      * @example "/time-entries/3694122002305638144" -> "3694122002305638144"
      * @param reference Entity reference string or ID returned by the API with a field named `self`. For example: `/time-entries/3694122002305638144`.
      */
-    static entryIDFromReference(reference: string | number): string {
+    static entryIDFromReference(reference: string | number): number {
         // Just in case it's already split/stripped, it gets the last element
-        return reference.toString()
-            .split('/').at(-1);
+        return parseInt(reference.toString()
+            .split('/').at(-1));
     }
 
     // MARK: Projects
@@ -102,13 +102,26 @@ export default class Timing {
      */
     async createProject(
         body: TimingTypes.Projects.Create.RequestBody,
-    ): Promise<TimingTypes.Projects.Create.Response> {
+    ): Promise<{
+        data: TimingTypes.Projects.Create.Response,
+        entriesParams?: TimingTypes.TimeEntries.List.Params,
+    }> {
         const { data } = await this._client.POST('/api/v1/projects', {
             params: {},
             body: body,
         });
 
-        return data.data;
+        let entriesParams: TimingTypes.TimeEntries.List.Params | undefined;
+        if (data.links?.['time-entries'] && data.data.self) {
+            entriesParams = {
+                projects: [data.data.self],
+            };
+        }
+
+        return {
+            data: data.data,
+            entriesParams: entriesParams,
+        };
     }
 
     /**
@@ -139,7 +152,7 @@ export default class Timing {
      * @param body New data to update on the specified project.
      */
     async updateProject(
-        projectId: TimingTypes.Projects.Update.PathParam,
+        projectId: TimingTypes.Projects.Update.PathParam | string,
         body: TimingTypes.Projects.Update.RequestBody,
     ): Promise<TimingTypes.Projects.Update.Response> {
         const { data } = await this._client.PUT('/api/v1/projects/{project_id}', {
@@ -284,10 +297,9 @@ export default class Timing {
         if (response.redirected && response.headers.has('location')) {
             const activityID = Timing.entryIDFromReference(
                 response.headers.get('location')?.[0],
-            )
-                .split('/').at(-1);
+            );
             
-            return activityID;
+            return activityID.toString();
         }
         
         return undefined;
