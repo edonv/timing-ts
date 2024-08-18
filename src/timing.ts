@@ -8,6 +8,16 @@ interface TimingOptions {
     // requestTimeout?: number;
 }
 
+export class TimingError extends Error {
+    readonly responseData: unknown;
+
+    constructor(message: string, responseData: unknown) {
+        super(message);
+        this.name = 'TimingError';
+        this.responseData = responseData
+    }
+}
+
 export default class Timing {
     private static readonly _baseUrl = 'https://web.timingapp.com';
 
@@ -25,6 +35,17 @@ export default class Timing {
                 request.headers.set("Authorization", `Bearer ${opts.apiKey}`);
                 return request;
             },
+            async onResponse({ response }) {
+                // If not OK, throw error.
+                if (!response.ok) {
+                    // If response is "Unauthorized", set the message specifically.
+                    const message = response.status == 401 ? 'Request not authorized.' : 'Request unsuccessful.';
+                    throw new TimingError(
+                        message,
+                        await response.json(),
+                    );
+                }
+            }
         };
 
         this._client.use(authMiddleware);
