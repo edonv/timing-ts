@@ -96,7 +96,7 @@ export default class Timing {
                 query: {
                     title: query.title,
                     team_id: query.team_id,
-                    hide_archived: query.hide_archived?.toString(),
+                    hide_archived: booleanToInt(query.hide_archived) as unknown as boolean,
                 }
             },
         });
@@ -426,5 +426,13 @@ export default class Timing {
                 },
             },
         });
+    }
+}
+
+function booleanToInt(bool: boolean | undefined): number | undefined {
+    if (typeof bool == 'undefined') {
+        return undefined;
+    } else {
+        return +bool;
     }
 }
