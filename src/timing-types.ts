@@ -2,7 +2,7 @@ import type { operations } from './openapi/schema.js';
 
 type _QueryParams<K extends keyof operations> = operations[K]['parameters']['query'];
 type _PathParams<K extends keyof operations> = operations[K]['parameters']['path'];
-type _ReqBody<K extends keyof operations> = operations[K]['requestBody'];
+type _ReqBody<K extends keyof operations> = NonNullable<operations[K]['requestBody']>;
 type _Response<K extends keyof operations, R extends keyof operations[K]['responses']> = operations[K]['responses'][R];
 
 export namespace TimingTypes {
