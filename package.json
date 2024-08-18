@@ -18,12 +18,12 @@
   "dependencies": {
     "openapi-fetch": "^0.10.2"
   },
-  "main": "./lib/timing.js",
-  "types": "./lib/timing.d.ts",
+  "main": "./dist/timing.js",
+  "types": "./dist/timing.d.ts",
   "files": [
     "/README.md",
     "/LICENSE.md",
-    "/lib/"
+    "/dist/"
   ],
   "devDependencies": {
     "@types/jest": "^29.5.12",
