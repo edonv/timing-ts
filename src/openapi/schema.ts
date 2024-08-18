@@ -574,10 +574,10 @@ export interface operations {
                  */
                 title?: string;
                 /**
-                 * @description If set to `true`, archived projects and their children will not be included in the result.
-                 * @example true
+                 * @description If set to `1`, archived projects and their children will not be included in the result.
+                 * @example 1
                  */
-                hide_archived?: string;
+                hide_archived?: boolean;
                 /**
                  * @description The ID of the team to list projects for. Can be omitted to list the user's private projects. See [Return a list containing all the teams you are a member of.](#teams-GETapi-v1-teams) for obtaining a team ID to provide here.
                  * @example null
@@ -950,12 +950,12 @@ export interface operations {
                  * @description Whether to include app usage in the report. If false, only time entries are returned. Default: `0`
                  * @example 0
                  */
-                include_app_usage?: number;
+                include_app_usage?: boolean;
                 /**
                  * @description If true, the response will also contain time entries that belong to other team members, provided the current user has permission to view them. Default: `0`
                  * @example 0
                  */
-                include_team_members?: number;
+                include_team_members?: boolean;
                 /**
                  * @description Restricts the query to data associated with the given user. Can be repeated to include time entries from several users.
                  * @example [
@@ -984,7 +984,7 @@ export interface operations {
                  * @description If true, the response will also contain time entries that belong to any child projects of the ones provided in `projects[]`. Default: `0`
                  * @example 1
                  */
-                include_child_projects?: number;
+                include_child_projects?: boolean;
                 /**
                  * @description Restricts the query to time entries whose title and/or notes contain all words in this parameter. The search is case-insensitive but diacritic-sensitive. Note: this parameter can not be used when app usage is included.
                  * @example meeting
@@ -1003,10 +1003,10 @@ export interface operations {
                  */
                 project_grouping_level?: number;
                 /**
-                 * @description If true, the properties of each line's project will be included in the response. Requires `columns[]` to contain `project`.
+                 * @description If true, the properties of each line's project will be included in the response. Requires `columns[]` to contain `project`. Default: `0`
                  * @example 1
                  */
-                include_project_data?: number;
+                include_project_data?: boolean;
                 /**
                  * @description When this argument is provided, report lines will be aggregated according to the given calendar unit. Possible values: `exact`, `day`, `week`, `month`, `year`. Default: `exact`
                  * @example day
@@ -1351,27 +1351,27 @@ export interface operations {
                  * @description If true, the response will also contain time entries that belong to any child projects of the ones provided in `projects[]`. Default: `0`
                  * @example 1
                  */
-                include_child_projects?: number;
+                include_child_projects?: boolean;
                 /**
                  * @description Restricts the query to time entries whose title and/or notes contain all words in this parameter. The search is case-insensitive but diacritic-sensitive.
                  * @example meeting
                  */
                 search_query?: string;
                 /**
-                 * @description If provided, returns only time entries that are either running or not running.
+                 * @description If provided, returns only time entries that are either running or not running. Default: `0`
                  * @example 0
                  */
-                is_running?: number;
+                is_running?: boolean;
                 /**
                  * @description If true, the properties of the time entry's project will be included in the response. Default: `0`
                  * @example 1
                  */
-                include_project_data?: number;
+                include_project_data?: boolean;
                 /**
                  * @description If true, the response will also contain time entries that belong to other team members, provided the current user has permission to view them. Default: `0`
                  * @example 0
                  */
-                include_team_members?: number;
+                include_team_members?: boolean;
                 /**
                  * @description Restricts the query to data associated with the given user. Can be repeated to include time entries from several users.
                  * @example [
