@@ -11,9 +11,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest",
+    "test": "tsc && node dist/test/timing.test.js",
     "api-gen": "npx openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts",
-    "gen-build": "npx openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts && tsc --noEmit"
+    "gen-build": "npx openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts && tsc"
   },
   "dependencies": {
     "openapi-fetch": "^0.10.2"
