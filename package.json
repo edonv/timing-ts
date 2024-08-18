@@ -16,7 +16,7 @@
     "gen-build": "npx openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts && npm run build"
   },
   "dependencies": {
-    "openapi-fetch": "^0.10.2"
+    "openapi-fetch": "^0.10.6"
   },
   "main": "./dist/timing.js",
   "types": "./dist/timing.d.ts",
@@ -33,7 +33,7 @@
     "dotenv": "^16.4.5",
     "jest": "^29.7.0",
     "luxon": "^3.5.0",
-    "openapi-typescript": "^7.1.1",
+    "openapi-typescript": "^7.3.0",
     "ts-jest": "^29.2.3",
     "typescript": "^5.5.3"
   },
