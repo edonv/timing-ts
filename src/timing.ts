@@ -92,7 +92,11 @@ export default class Timing {
     ): Promise<TimingTypes.Projects.List.Response> {
         const { data } = await this._client.GET('/api/v1/projects', {
             params: {
-                query: query,
+                query: {
+                    title: query.title,
+                    team_id: query.team_id,
+                    hide_archived: query.hide_archived?.toString(),
+                }
             },
         });
 
@@ -161,7 +165,7 @@ export default class Timing {
         const { data } = await this._client.PUT('/api/v1/projects/{project_id}', {
             params: {
                 path: {
-                    project_id: projectId,
+                    project_id: typeof projectId == 'string' ? parseInt(projectId) : projectId,
                 },
             },
             body: body,
