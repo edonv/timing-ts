@@ -1,4 +1,4 @@
-import type { operations } from './openapi/schema';
+import type { operations } from './openapi/schema.js';
 
 type _QueryParams<K extends keyof operations> = operations[K]['parameters']['query'];
 type _PathParams<K extends keyof operations> = operations[K]['parameters']['path'];
