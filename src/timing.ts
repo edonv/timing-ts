@@ -59,10 +59,11 @@ export default class Timing {
      * @example "/time-entries/3694122002305638144" -> "3694122002305638144"
      * @param reference Entity reference string or ID returned by the API with a field named `self`. For example: `/time-entries/3694122002305638144`.
      */
-    static entryIDFromReference(reference: string | number): number {
+    static entryIDFromReference(reference: string | number): string {
         // Just in case it's already split/stripped, it gets the last element
-        return parseInt(reference.toString()
-            .split('/').at(-1));
+        return reference.toString()
+            .split('/')
+            .at(-1);
     }
 
     // MARK: Projects
@@ -144,7 +145,7 @@ export default class Timing {
         const { data } = await this._client.GET('/api/v1/projects/{project_id}', {
             params: {
                 path: {
-                    project_id: Timing.entryIDFromReference(projectId),
+                    project_id: Timing.entryIDFromReference(projectId) as unknown as number,
                 },
             },
         });
