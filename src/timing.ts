@@ -9,12 +9,14 @@ interface TimingOptions {
 }
 
 export class TimingError extends Error {
-    readonly responseData: unknown;
+    readonly status: number;
+    readonly body: unknown;
 
-    constructor(message: string, responseData: unknown) {
+    constructor(message: string, status: number, body: unknown) {
         super(message);
         this.name = 'TimingError';
-        this.responseData = responseData
+        this.status = status;
+        this.body = body
     }
 }
 
@@ -42,6 +44,7 @@ export default class Timing {
                     const message = response.status == 401 ? 'Request not authorized.' : 'Request unsuccessful.';
                     throw new TimingError(
                         message,
+                        response.status,
                         await response.json(),
                     );
                 }
