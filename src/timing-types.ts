@@ -13,13 +13,20 @@ export namespace TimingTypes {
         }
 
         export namespace List {
-            export type Params = _QueryParams<'listProjects'>;
+            export type Params = Omit<_QueryParams<'listProjects'>, 'hide_archived'> & {
+                /**
+                 * @description If set to `true`, archived projects and their children will not be included in the result.
+                 * @example true
+                 */
+                hide_archived?: true,
+            };
             export type Response = _Response<'listProjects', 200>['content']['application/json']['data'];
         }
 
         export namespace Create {
             export type RequestBody = _ReqBody<'createProject'>['content']['application/json'];
             export type Response = _Response<'createProject', 201>['content']['application/json']['data'];
+            export type LinkedTimeEntriesParams = TimeEntries.List.Params;
         }
 
         export namespace Show {
@@ -69,7 +76,7 @@ export namespace TimingTypes {
 
         export namespace ShowLatest {
             // export type Response = _Response<'showLatestTimeEntry', 302>['content']['text/plain'];
-            export type Response = _PathParams<'showTimeEntry'>['activity_id'];
+            export type Response = Show.PathParam;
         }
 
         export namespace ShowRunning {
