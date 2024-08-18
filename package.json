@@ -38,7 +38,15 @@
     "typescript": "^5.5.3"
   },
   "author": "edonv",
-  "keywords": [],
+  "keywords": [
+    "timing",
+    "openapi",
+    "mac",
+    "time",
+    "tracking",
+    "api",
+    "typescript"
+  ],
   "engines": {
     "node": ">=8.0.0"
   }
