@@ -9,6 +9,7 @@
     "outDir": "dist",
     "noImplicitAny": false,
     "strict": false,
+    "skipLibCheck": true,
     "sourceMap": true,
     "declaration": true,
     "noUncheckedIndexedAccess": true
