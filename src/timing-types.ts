@@ -2,7 +2,7 @@ import type { operations } from './openapi/schema.js';
 
 type _QueryParams<K extends keyof operations> = operations[K]['parameters']['query'];
 type _PathParams<K extends keyof operations> = operations[K]['parameters']['path'];
-type _ReqBody<K extends keyof operations> = NonNullable<operations[K]['requestBody']>;
+type _ReqBody<K extends keyof operations> = NonNullable<operations[K]['requestBody']>['content']['application/json'];
 type _Response<K extends keyof operations, R extends keyof operations[K]['responses']> = operations[K]['responses'][R];
 
 export namespace TimingTypes {
@@ -24,7 +24,7 @@ export namespace TimingTypes {
         }
 
         export namespace Create {
-            export type RequestBody = _ReqBody<'createProject'>['content']['application/json'];
+            export type RequestBody = _ReqBody<'createProject'>;
             export type Response = _Response<'createProject', 201>['content']['application/json']['data'];
             export type LinkedTimeEntriesParams = TimeEntries.List.Params;
         }
@@ -36,7 +36,7 @@ export namespace TimingTypes {
 
         export namespace Update {
             export type PathParam = _PathParams<'updateProject'>['project_id'];
-            export type RequestBody = _ReqBody<'updateProject'>['content']['application/json'];
+            export type RequestBody = _ReqBody<'updateProject'>;
             export type Response = _Response<'updateProject', 200>['content']['application/json']['data'];
         }
 
@@ -66,7 +66,7 @@ export namespace TimingTypes {
 
     export namespace TimeEntries {
         export namespace Start {
-            export type RequestBody = _ReqBody<'startTimer'>['content']['application/json'];
+            export type RequestBody = _ReqBody<'startTimer'>;
             export type Response = _Response<'startTimer', 201>['content']['application/json']['data'];
         }
 
@@ -108,7 +108,7 @@ export namespace TimingTypes {
         }
 
         export namespace Create {
-            export type Body = _ReqBody<'createTimeEntry'>['content']['application/json'];
+            export type Body = _ReqBody<'createTimeEntry'>;
             export type Response = _Response<'createTimeEntry', 201>['content']['application/json']['data'];
         }
 
@@ -119,7 +119,6 @@ export namespace TimingTypes {
 
         export namespace Update {
             export type PathParam = _PathParams<'updateTimeEntry'>['activity_id'];
-            export type Body = _ReqBody<'updateTimeEntry'>['content']['application/json'];
             export type Response = _Response<'updateTimeEntry', 200>['content']['application/json']['data'];
         }
 
