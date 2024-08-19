@@ -119,6 +119,7 @@ export namespace TimingTypes {
 
         export namespace Update {
             export type PathParam = _PathParams<'updateTimeEntry'>['activity_id'];
+            export type Body = _ReqBody<'updateTimeEntry'>;
             export type Response = _Response<'updateTimeEntry', 200>['content']['application/json']['data'];
         }
 
