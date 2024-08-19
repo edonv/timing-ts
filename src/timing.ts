@@ -217,7 +217,13 @@ export default class Timing {
     ): Promise<TimingTypes.Reports.Generate.Response> {
         const { data } = await this._client.GET('/api/v1/report', {
             params: {
-                query: query,
+                query: {
+                    ...query,
+                    include_app_usage: booleanToInt(query.include_app_usage) as unknown as boolean,
+                    include_team_members: booleanToInt(query.include_team_members) as unknown as boolean,
+                    include_child_projects: booleanToInt(query.include_child_projects) as unknown as boolean,
+                    include_project_data: booleanToInt(query.include_project_data) as unknown as boolean,
+                },
             },
         });
 
@@ -342,7 +348,13 @@ export default class Timing {
     ): Promise<TimingTypes.TimeEntries.List.Response> {
         const { data } = await this._client.GET('/api/v1/time-entries', {
             params: {
-                query: query,
+                query: {
+                    ...query,
+                    include_child_projects: booleanToInt(query.include_child_projects) as unknown as boolean,
+                    is_running: booleanToInt(query.is_running) as unknown as boolean,
+                    include_project_data: booleanToInt(query.include_project_data) as unknown as boolean,
+                    include_team_members: booleanToInt(query.include_team_members) as unknown as boolean,
+                },
             },
         });
 
