@@ -4,7 +4,7 @@
   "type": "module",
   "license": "MIT",
   "description": "API package for Timing.",
-  "repository": "https://github.com/edonv/timing-ts.git",
+  "repository": "github:edonv/timing-ts",
   "private": false,
   "sponsor": {
     "url": "https://github.com/sponsors/edonv"
