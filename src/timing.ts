@@ -2,6 +2,7 @@ import createClient, { type Middleware } from 'openapi-fetch';
 import { paths } from './openapi/schema.js';
 
 import { TimingTypes } from './timing-types.js';
+export { TimingTypes } from './timing-types.js';
 
 interface TimingOptions {
     apiKey: string;
