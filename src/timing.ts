@@ -95,7 +95,7 @@ export default class Timing {
             params: {
                 query: {
                     title: query.title,
-                    team_id: query.team_id,
+                    team_id: Timing.entryIDFromReference(query.team_id) as unknown as number,
                     hide_archived: booleanToInt(query.hide_archived) as unknown as boolean,
                 }
             },
@@ -166,7 +166,7 @@ export default class Timing {
         const { data } = await this._client.PUT('/api/v1/projects/{project_id}', {
             params: {
                 path: {
-                    project_id: typeof projectId == 'string' ? parseInt(projectId) : projectId,
+                    project_id: Timing.entryIDFromReference(projectId) as unknown as number,
                 },
             },
             body: body,
@@ -182,12 +182,12 @@ export default class Timing {
      * @param body New data to update on the specified project.
      */
     async deleteProject(
-        projectId: TimingTypes.Projects.Delete.PathParam,
+        projectId: TimingTypes.Projects.Delete.PathParam | string,
     ) {
         await this._client.DELETE('/api/v1/projects/{project_id}', {
             params: {
                 path: {
-                    project_id: projectId,
+                    project_id: Timing.entryIDFromReference(projectId) as unknown as number,
                 },
             },
         });
@@ -234,12 +234,12 @@ export default class Timing {
      * @param teamId The ID of the team to list members for.
      */
     async listTeamMembers(
-        teamId: TimingTypes.Teams.Members.PathParam,
+        teamId: TimingTypes.Teams.Members.PathParam | string,
     ): Promise<TimingTypes.Teams.Members.Response> {
         const { data } = await this._client.GET('/api/v1/teams/{team_id}/members', {
             params: {
                 path: {
-                    team_id: teamId,
+                    team_id: Timing.entryIDFromReference(teamId) as unknown as number,
                 },
             },
         });
@@ -371,12 +371,12 @@ export default class Timing {
      * @description Display the specified time entry.
      */
     async showTimeEntry(
-        activityId: TimingTypes.TimeEntries.Show.PathParam,
+        activityId: TimingTypes.TimeEntries.Show.PathParam | number,
     ): Promise<TimingTypes.TimeEntries.Show.Response> {
         const { data } = await this._client.GET('/api/v1/time-entries/{activity_id}', {
             params: {
                 path: {
-                    activity_id: activityId,
+                    activity_id: Timing.entryIDFromReference(activityId),
                 },
             },
         });
@@ -393,13 +393,13 @@ export default class Timing {
      * A time entry's title and project fields can not both be empty.
      */
     async updateTimeEntry(
-        activityId: TimingTypes.TimeEntries.Update.PathParam,
+        activityId: TimingTypes.TimeEntries.Update.PathParam | number,
         body: TimingTypes.TimeEntries.Update.Body,
     ): Promise<TimingTypes.TimeEntries.Update.Response> {
         const { data } = await this._client.PUT('/api/v1/time-entries/{activity_id}', {
             params: {
                 path: {
-                    activity_id: activityId,
+                    activity_id: Timing.entryIDFromReference(activityId),
                 },
             },
             body: body,
@@ -417,12 +417,12 @@ export default class Timing {
      * A time entry's title and project fields can not both be empty.
      */
     async deleteTimeEntry(
-        activityId: TimingTypes.TimeEntries.Delete.PathParam,
+        activityId: TimingTypes.TimeEntries.Delete.PathParam | number,
     ) {
         await this._client.DELETE('/api/v1/time-entries/{activity_id}', {
             params: {
                 path: {
-                    activity_id: activityId,
+                    activity_id: Timing.entryIDFromReference(activityId),
                 },
             },
         });
