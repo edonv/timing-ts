@@ -1,0 +1,5 @@
+apis:
+  primary:
+    root: ./src/openapi/timing-openapi.yaml
+    x-openapi-ts:
+      output: ./src/openapi/schema.ts

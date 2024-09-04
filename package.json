@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
     "test": "tsc && node dist/test/timing.test.js",
-    "api-gen": "openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts",
+    "api-gen": "openapi-typescript",
     "gen-build": "npm run api-gen && npm run build",
     "publish": "rm -r ./dist ; npm run gen-build && npm publish"
   },
