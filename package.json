@@ -15,7 +15,7 @@
     "test": "tsc && node dist/test/timing.test.js",
     "api-gen": "openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts",
     "gen-build": "npm run api-gen && npm run build",
-    "publish": "npm run gen-build && npm publish"
+    "publish": "rm -r ./dist ; npm run gen-build && npm publish"
   },
   "main": "./dist/timing.js",
   "types": "./dist/timing.d.ts",
