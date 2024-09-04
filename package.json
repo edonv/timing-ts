@@ -13,8 +13,8 @@
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
     "test": "tsc && node dist/test/timing.test.js",
-    "api-gen": "npx openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts",
-    "gen-build": "npx openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts && npm run build",
+    "api-gen": "openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts",
+    "gen-build": "openapi-typescript ./src/openapi/timing-openapi.yaml -o ./src/openapi/schema.ts && npm run build",
     "publish": "npm run gen-build && npm publish"
   },
   "dependencies": {
