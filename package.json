@@ -17,9 +17,6 @@
     "gen-build": "npm run api-gen && npm run build",
     "publish": "npm run gen-build && npm publish"
   },
-  "dependencies": {
-    "openapi-fetch": "^0.10.6"
-  },
   "main": "./dist/timing.js",
   "types": "./dist/timing.d.ts",
   "files": [
@@ -27,6 +24,9 @@
     "/LICENSE.md",
     "/dist/"
   ],
+  "dependencies": {
+    "openapi-fetch": "^0.10.6"
+  },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.12",
