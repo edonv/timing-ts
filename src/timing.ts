@@ -98,7 +98,7 @@ export default class Timing {
                     title: query.title,
                     team_id: Timing.entryIDFromReference(query.team_id) as unknown as number,
                     hide_archived: booleanToInt(query.hide_archived) as unknown as boolean,
-                }
+                },
             },
         });
 
