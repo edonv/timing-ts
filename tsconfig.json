@@ -18,6 +18,5 @@
     "src/**/*.ts",
     "src/openapi/*.yaml",
     "test"
-  ],
-  "exclude": ["src/openapi/generated/**"]
+  ]
 }
