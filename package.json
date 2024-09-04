@@ -5,6 +5,7 @@
   "license": "MIT",
   "description": "API package for Timing.",
   "repository": "github:edonv/timing-ts",
+  "author": "edonv",
   "private": false,
   "sponsor": {
     "url": "https://github.com/sponsors/edonv"
@@ -38,7 +39,6 @@
     "ts-jest": "^29.2.3",
     "typescript": "^5.5.3"
   },
-  "author": "edonv",
   "keywords": [
     "timing",
     "openapi",
