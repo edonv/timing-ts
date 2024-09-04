@@ -40,7 +40,9 @@ jspm_packages/
 .env.local
 
 # VS Code Files
-Timing NPM.code-workspace
+*.code-workspace
 
 # Generated JS
 dist
+
+.DS_Store
